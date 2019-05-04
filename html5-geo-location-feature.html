@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 GeoLocation feature</title>
+	<style type="text/css">
+		#map {
+			width: 800px;
+			height: 600px;
+		}
+	</style>
+</head>
+<body>
+	<h1>HTML5 GeoLocation feature</h1>
+	<hr>
+	<div id="map"></div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqzZW3xmX6nlPrJgANxLo6qOZ3lKX9TGc"></script>
+   
+	<script type="text/javascript">
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(function(gps){
+				var lat = gps.coords.latitude;
+				var lon = gps.coords.longitude;
+
+				var mapOptions = {
+					zoom: 17,
+					center: {lat: lat, lng: lon}
+				};
+				map = new google.maps.Map(document.getElementById('map'), mapOptions);
+				var marker = new google.maps.Marker({
+					position: {lat: lat, lng: lon},
+					map: map
+				});				
+			});
+		}
+		else {
+			document.write("<h1>Geolocation not supported</h1>")
+		}
+	</script>
+</body>
+</html>
