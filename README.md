@@ -7,3 +7,4 @@ Understanding PHP and HTML5 concepts such as:
 * HTML5 download feature
 * File upload
 * Automatic refresh of web page using php
+* Plot graph examples
