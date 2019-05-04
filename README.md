@@ -8,3 +8,4 @@ Understanding PHP and HTML5 concepts such as:
 * File upload
 * Automatic refresh of web page using php
 * Plot graph examples
+* HTML5 Geo-Location feature
