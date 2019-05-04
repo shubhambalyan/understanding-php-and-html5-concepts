@@ -1,0 +1,29 @@
+<html> 
+<head> 
+<script>
+function SelectDatabase(val){
+ var element=document.getElementById('otherType');
+ if(val=='other')
+   element.style.display='block';
+ else  
+   element.style.display='none';
+}
+</script> 
+
+</head>
+<body>
+<label for="db">Choose type</label>
+  <select name="dbType" onchange='SelectDatabase(this.value);'> 
+    <option>Choose Database Type</option>
+   <option value="oracle">Oracle</option>
+   <option value="mssql">MS SQL</option>
+   <option value="mysql">MySQL</option>
+   <option value="other">Other</option>
+  </select>
+<div id="otherType" style="display:none;">
+<label for="specify">Specify</label>
+<input type="text" name="specify" placeholder="Specify Databse Type"/>
+</div>
+
+</body>
+</html>
