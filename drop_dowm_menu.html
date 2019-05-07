@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Activity 7</title>        
+    </head>
+    <body id="body">
+	<style>
+.header
+{
+	background-color: gray;
+	font: normal 20px ;
+}
+#body
+{
+	background-color: cyan;
+	text-align: center;
+}
+#menu
+{
+    top:150px;
+    left:8%;
+    padding:0;
+    margin:0;
+}
+#menu ul
+{
+    padding:0;
+    margin:0;
+    line-height:30px;
+}
+#menu li
+{
+    position:relative;
+    float:left;
+    list-style:none;
+    background:red;
+    border-radius:5px;
+}
+#menu ul ul
+{
+    position:absolute;
+    visibility:hidden;
+    padding:0;
+    margin:0;
+    top:30px;
+}
+#menu ul li a
+{
+    text-align:center;
+    font:"Arial Black", Arial;
+    font-size:24px;
+    color:rgba(255,255,255,9);
+    width:150px;
+    height:30px;
+    display:block;
+    text-decoration:none;
+}
+#menu ul li:hover
+{
+    background-color: blue;
+    text-decoration:none;
+}
+#menu ul li:hover ul
+{
+    visibility:visible;
+    z-index:1;
+    position: absolute;
+}
+#menu ul li:hover ul li a
+{
+    background:rgba(0,0,0,9);
+    z-index:1;
+    border-bottom:1px solid pink;
+    opacity:0.9;
+    text-decoration:none;
+    border-radius:5px;
+}
+#menu ul li ul li:hover
+{
+    background:green;
+    opacity:0.8;
+    text-decoration:underline;
+}
+	</style>
+        <div class="header">
+            <h1>Drop Down Menu</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Categories</a>    
+                    <ul>
+                        <li><a href="#">Photoshop</a></li>
+                        <li><a href="#">Database</a></li> 
+                        <li><a href="#">Web Design</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="#">Most Popular</a>
+                    <ul>
+                        <li><a href="#">Notepad++</a></li>
+                        <li><a href="#">Wordpress</a></li>
+						<li><a href="#">Drupal</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </body>
+</html>

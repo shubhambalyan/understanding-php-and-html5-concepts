@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Activity 2</title>
+	
+</head>
+<body>
+	<div class="container">
+		<form onsubmit="return false;">
+			<div> 
+				<label>Enter a sentence</label>
+				<input type="text" id="sentence">
+			</div><br>
+			<input type="submit" onclick="myFunction()" value="Click to view String Operations">
+		</form>
+		<hr id="hr">
+		<div id="output"></div>
+	</div>
+	<script>
+	function myFunction() {
+	            
+	var sentence = document.getElementById('sentence').value;
+
+	var x = "";
+	x += "<h2>Name concatenated in the end </h2>";
+	x += "<p>" + sentence + " VIT University " + "</p>";
+	x += "<h2>Reversed scentence </h2>";
+	x += "<p>" + sentence.split("").reverse().join("") + "</p>";
+	x += "<h2>No. of occurences of each word </h2>";
+
+	var arr = sentence.split(" ");
+	for (var i = 0; i < arr.length; i++) {
+		if(arr[i] == "")
+			continue;
+		var flag = 0;    
+		if (i > 0) { 									 
+			for (var j = i-1; j >= 0; j--) {             
+				if(arr[i] === arr[j]) {   
+					flag = 1;
+					break;
+				}
+			}
+		}
+		
+		if (flag == 0) {                                
+			var count = 0;
+			for (var j = 0; j < arr.length; j++) {
+				if(arr[i] === arr[j])
+					count++;
+			}
+			x+= "<p>" + arr[i] + " : "  + count +"</p>";
+		}		
+	}
+	
+	document.getElementById('output').innerHTML = x;
+}
+</script>
+</body>
+</html>

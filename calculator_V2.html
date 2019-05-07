@@ -1,0 +1,165 @@
+<html>
+<head>
+	<title>Activity 3</title>
+	<style>
+	td {
+    border: 1px solid black;
+}
+.container {
+    width: 600px;
+    padding-top: 15px;
+    background-color: darkgray;
+    border-radius: 6px;
+   
+}
+
+table {
+    width: 100%;
+    margin: 0px auto;
+    padding-bottom: 25px;
+    border-spacing: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+body {
+    background-color: gray;
+}
+
+input {
+    width: 100%;
+    padding: 6px;
+    text-align: right;
+}
+
+.button ,.bn,.bo{
+    width: 25%;
+    text-align: center;
+    background-color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+   
+}
+
+.display {
+    border: none;
+}
+#input {
+    color: #fff;
+    text-align: right;
+    padding: 0px 25px;
+    height: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div id="input"></div>
+		<table>
+			<tr>
+				<td class="button" id="clear">C</td>
+				<td colspan="3" class="display"><input type="text" id="display-input"></td>
+			</tr>
+			<tr>
+				<td class="bn">7</td>
+				<td class="bn">8</td>
+				<td class="bn">9</td>
+				<td class="bo">+</td>
+			</tr>
+			<tr>
+				<td class="bn">4</td>
+				<td class="bn">5</td>
+				<td class="bn">6</td>
+				<td class="bo">-</td>
+			</tr>
+			<tr>
+				<td class="bn">1</td>
+				<td class="bn">2</td>
+				<td class="bn">3</td>
+				<td class="bo">/</td>
+			</tr>
+			<tr>
+				<td class="bn">0</td>
+				<td class="button" id="dot">.</td>
+				<td class="button" id="equalto">=</td>
+				<td class="bo">x</td>
+			</tr>
+
+		</table>
+
+	</div>
+	
+	<script >
+	window.onload = function() {
+
+	var operand1 = 0, operand2 = 0, result = 0, operator = "";
+	var display_input = document.getElementById("display-input");
+	var numberButtons = document.getElementsByClassName("bn");
+	var operatorButtons = document.getElementsByClassName("bo");
+	var equaltoButton = document.getElementById("equalto");
+
+	/* Attach event listner to all number buttons */
+	for (var i = 0; i < numberButtons.length; i++) {
+		numberButtons[i].addEventListener("click", numberFunction);
+	};
+
+	/* Attach event listner to all operator buttons */
+	for (var i = 0; i < operatorButtons.length; i++) {
+		operatorButtons[i].addEventListener("click", operatorFunction);
+	};
+
+	/* Attach event listner to 'equal to' button */
+	equaltoButton.addEventListener("click", equateFunction);
+
+	/* When number is pressed - Appends the number clicked in the display */
+	function numberFunction() {   		
+		display_input.value += this.innerHTML.trim();
+	}
+	
+	/* When operator is pressed */
+	function operatorFunction() {
+		if(operator == "") {
+			operand1 = display_input.value;	
+		}
+		operator = this.innerHTML.trim();		
+		display_input.value = "";
+		document.getElementById("input").innerHTML = operand1 + " " + operator;
+	}
+
+	/* When equal to is pressed */
+	function equateFunction() {
+		operand2 = display_input.value;
+		operand1 = parseFloat(operand1);
+		operand2 = parseFloat(operand2);
+
+		switch(operator) {
+			case '+': result = operand1 + operand2; break;
+			case '-': result = operand1 - operand2; break;
+			case 'x': result = operand1 * operand2; break;
+			case '/': result = operand1 / operand2; break;
+			default: result = operand2; operator = "";				
+			
+		}
+
+		display_input.value = result;
+		operator = "";
+		document.getElementById("input").innerHTML = "";
+	}
+
+	/* When clear is pressed */
+	document.getElementById("clear").addEventListener("click", function() {		 
+		display_input.value = "";
+		document.getElementById("input").innerHTML = "";
+
+	});
+
+	/* When 'decimal point' button is pressed */
+	document.getElementById("dot").addEventListener("click", function() {   
+		display_input.value += this.innerHTML.trim();
+	});
+}
+
+</script>
+</body>
+</html>
